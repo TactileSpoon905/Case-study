@@ -1,0 +1,202 @@
+---
+title: "Case study: Vermont EV charging network & renewable energy data analysis"
+author: "_by_ Mohammad Hussain"
+date: "December 18, 2021"
+output: 
+  pdf_document: 
+    fig_crop: no
+    toc: yes
+---
+
+```{r setup, include= FALSE}
+library(knitr)
+library(tinytex)
+opts_chunk$set(echo = FALSE)
+```
+
+\newpage
+
+# Introduction
+
+The following case study was done as part of a data analytics milestone project which involved processing data from dirty to clean, merging queries (joining tables), transforming data & finally, using variety of visuals to tell a data story. Tools used in this project were MS Excel & Power BI Desktop
+
+_Note_: This study was documented using R markdown (RStudio Desktop)
+
+# About Power BI Desktop
+
+With Power BI Desktop, users can visually explore data through a free-form drag-&-drop canvas, a broad range of modern data visualisations, & an easy-to-use report authoring experience. This product is free to download from Microsoft website or the store app for windows users.
+
+Benefits & main uses of Power BI Desktop:
+
+* Access data from hundreds of supported on-premises & cloud-based sources, such as Dynamics 365, Salesforce, Azure SQL DB, Excel, & SharePoint
+
+* Save time & make data prep easier with data modelling tools using the self-service Power Query experience familiar to millions of Excel users. Ingest, transform, integrate, & enrich data in Power BI
+
+* Dig deeper into data & find patterns you may have otherwise missed that lead to actionable insights. Use features like quick measures, grouping, forecasting, & clustering
+
+* Create mobile-optimised reports for viewers to consume on the go. Publish from Power BI Desktop to the cloud or on-premises. Embed reports created in Power BI Desktop into existing apps or websites
+
+* Tell data stories using a drag-&-drop canvas & hundreds of modern data visuals from Microsoft & partners—or create your own, using the Power BI open source custom visuals framework
+
+# Dataset sources
+
+The following case study focuses on Vermont state located in the US & its counties. The data was obtained from data.gov website & will be referenced in the end section. Data courtesy:
+
+* _National Renewable Energy Laboratory_: Electric Vehicle Charging Station locations in Vermont
+
+* _Vermont Center for Geographic Information_: Created by The Renewable Energy Atlas of Vermont
+
+
+# Data preparation
+
+This section contains illustrations to how data was prepared using the Power Query editor in Power BI Desktop
+
+## Data simplification
+
+A good visual is produced when data is simplified & easy to read. This can be done by using the "Columns from example" when adding a new column in the editor toolbar. For this particular simplification, following steps were done:
+
+* The "Pricing" column was messy & could be compressed for gaining quick insight
+* Using the columns from example tool, records were compressed to simple categories
+* Now, the column shows pricing per hour for different charging rates
+
+
+This process is shown in Figure 1 respectively.
+
+![Transforming the EV_Pricing column](/Users/coolz/Desktop/Portfolio ML projekt/Screenshots BI/Pricing.png)
+
+Similarly, the same method was used to simplify & update the column that contained the records for access duration for which customers could use the EV chargins stations to charge their vehicles. This can be seen in Figure 2.
+
+![Transforming the Access_Days_Time column](/Users/coolz/Desktop/Portfolio ML projekt/Screenshots BI/Access.png)
+
+## Merging queries 
+
+Joining tables is an essential task in data analytics. Relating one table to another with primary & foreign keys is quite simple with the Power Query editor. Joining the first dataset requires the following steps:
+
+* Choose the tables in first & second order (Table A & Table B)
+* In our case, we choose EV_charging first to merge with rate_kWh
+* The primary key is selected to be zip code since record count is _unique_
+* An inner join is applied i.e. only matching recods will show in the merged table
+
+The result can be seen in Figure 3 where the joining process takes place (merge queries dialog box)
+
+![Performing an inner join](/Users/coolz/Desktop/Portfolio ML projekt/Screenshots BI/join_1.png)
+
+# Power BI reports
+
+This secion focuses on all visuals & what insights can be drawn from them.
+
+## Report 1: EV network geography & solar site distribution
+
+For the first report, anlaysis was made with general datasets (no prior joins) that were transformed using new columns. This report contained three (3) visuals which were as follows; world map, pie chart & key influencers. The visuals in the canvas are shown in Figure 4.
+
+![First report layout](/Users/coolz/Desktop/Portfolio ML projekt/Screenshots BI/report_1.png)
+
+Before insights can be drawn, Power BI Desktop offers a summary feature where a visual can be right-clicked & summarized. This opens a note which tries to summarize the data of that visual using Power BI engine. To compare conclusions, each report analysis will include my analysis & Power BI Desktop for interesting results. Now, let us understand what each visual represents & what conclusions can be drawn from them.
+
+\newpage
+
+* _**Conclusions drawn from author**_
+
+1. Majority of Vermont counties are located in North-East Unites States. The Chittendon county has the highest concentration of solar PV sites (211 total) with Grand Isle being least (9 total)
+
+2. The pie chart shows types of solar sites adopted in Vermont. Majority of it (about 70.74%) being solar PV. This tells us that majority of investment is made for standalone PV grids & not thermal or PV-thermal ones
+
+3. The key influencer visual tool tells us what influences station access to be 24 hrs. Tesla provides 24 hrs EV charging network twice as its competitors since 43 of stations do so. In case of SemaCharge, only 2 of its 34 stations provide 24 hrs access (5.88%). Remaining 58 stations i.e. others category, provide 24 hrs charging
+
+
+* _**What Power BI summarized**_
+
+1. Chittenden accounted for 19.54% of total solar PV sites. Across all 13 counties, total site count ranged from 9 to 211
+
+2. Solar PV had the most site locations at 764, followed by solar thermal at 272 & solar PV & thermal at 44. Solar PV accounted for 70.74% of all site locations across all Vermont counties
+
+3. When EV Network was Tesla, the probability of station access being '24 hrs' increased by 1.96 times
+
+\newpage
+
+## Report 2: EV network ownerships & pricing
+
+Data was merged for the second report & also the latter one. The relationship model can be seen in Figure 5 respectively. Let us explore the second report & its three (3) visuals illustrated in Figure 6. The scatter plot visual will have a more deep-dive so as to explain its analysis.
+
+![Relationship model](/Users/coolz/Desktop/Portfolio ML projekt/Screenshots BI/Relational_database.png)
+
+![Second report layout](/Users/coolz/Desktop/Portfolio ML projekt/Screenshots BI/report_2.png)
+
+![Visuals cross-reference](/Users/coolz/Desktop/Portfolio ML projekt/Screenshots BI/pie_highlight.png)
+
+\newpage
+
+* _**Conclusions drawn from author**_
+
+1. The scatter plot shows relationships between EV network providers & their charging rates (industrial versus commercial) with data points size determined by city count. Most EV networks charge almost the same rates between industrial & commercial. Take city of Waitsfield for example, with Tesla leading as a network provider, commercial rate is rather high at $0.21 per kWh
+
+2. The area chart shows a total of 32 cities which are granted free charging mostly by cooporative ownership. This is a good initiative to encourage consumers to transition from diesel/petrol vehicles to electric. Only 19 cities charge USD 0.00 to 1.00 per hour with further decline in cities that charge between USD 0.50 to 10.00 per hour or session.  
+
+3. With category selection in pie chart (see Figure 7), it was a pleasant surprise to see majority of common facilities (parking lots, airports & restaurants) constituting to 63% are located in Bradford, Waterbury, South Burlington & Montlepier cities of which airport EV charging network is solely provided by Tesla  
+
+
+* _**What Power BI summarized**_
+
+1. Restaurants had the highest city count at 5, followed by airport & parking lots as second and third highest count. Worship areas had the lowest city count at 1
+
+2. City count for Cooperative & Municipal ownerships diverged the most when the pricing per hour was free i.e. Cooperative had 8 cities more than Municipal in terms of ownership for free charging EV station support
+
+
+## Report 3: Algae biofuel & energy rates per kWh
+
+The third & final report contains three (3) visuals & a part of analysis was done using drill-through feature offered by the clustered column chart. This can be seen in Figures 8 & 9 respectively.
+
+![Third report layout](/Users/coolz/Desktop/Portfolio ML projekt/Screenshots BI/report_3.png)
+
+![Drilled through visuall](/Users/coolz/Desktop/Portfolio ML projekt/Screenshots BI/drill_through.png)
+
+This part of the analysis considers possibility of Algae biofuel as an alternative to non-solar energy sources. Prototypes & research were done in Vermont counties & therefore, datasets Algae & Site_types were merged with filter to non-solar for data collection (see Figure 10)
+
+![Performing a left outer join](/Users/coolz/Desktop/Portfolio ML projekt/Screenshots BI/join_2.png)
+
+* _**Conclusions drawn from author**_
+
+1. The map shows counties that have non-solar types & is sized by amount of research that is being carried out (count of research departments)
+
+2. Number of cities which focus on implementing sustainable research methods i.e. methane recycling from l&fills & algae photo-bioreactors. Additionally, drill-through of the clustered column chart shows only 9 cities in Windham county are undergoing reseach for both methane & photo-bioreactors
+
+3. City-wide non-solar average energy rates per kWh (commercial & industrial) in St. Johnsbury has almost identical rates making it less attractive for commercial businesses. On the contrary, St. Albans & Burlington are most cost effective for businesses. St. Albans is further favourable for industries since its industrial rate per kWh is the lowest in the entire Vermont state.
+
+
+* _**What Power BI summarized**_
+
+1. Addison in non-solar applied filter made up 35.53% of Algae potential research departments
+
+2. City count for Methane recycling & Photo-bioreactors diverged the most when the county was Windham i.e. Methane recycling research count was 7 more than Photo-bioreactors
+
+3. Commercial & Industrial rates are positively correlated with each other
+
+4. Across all 29 Cities, commercial rates ranged from USD 0.14 to 0.21 & Industrial ranged from USD 0.05 to 0.16. Energy rates diverged the most when the City was St. Albans, when commercial was USD 0.09 more than Industrial
+
+# Conclusion of case study
+
+**Tesla** is a leading provider for 24 hrs access of EV charging stations especially for the most common facility grounds which are airports, restaurants & parking lots combining at a *63.16%* of facilities in Vermont state. Major focus on standalone PV systems is given since *70.74%* constitute of solar PV sites. When non-renewable energy sources are considered, a great alternative would be Algae photo-bioreactors since a total of **68 cities** are in potential to implement it compared to **just 8 cities** opting to recycle methane form landfills as a renewable source. 
+
+The municipality of Vermont can do more in terms of providing free EV charging stations compared to cooperative businesses. **Only 12 cities** are covered under free EV charging stations by the municipality. Additionally, even though Tesla provides 24 hrs access, it is **not entirely free for all facilities** in Vermont. For instance, **just 10.53%** of all airports (only 2 city airports) are **covered under free charge** by all EV network providers. There is no support for free EV charging when it comes to **college campuses & place of worship(s)**.
+
+![Free charge facility coverage](/Users/coolz/Desktop/Portfolio ML projekt/Screenshots BI/free_distribution.png)
+ 
+For potential Algae biofuel alternative, the Federal & Municipality governments are only contributing *2.64%* compared to other cities. This is quite low considering switching to alternative renewables is an important shift toward environment sustainability.
+
+The case study surfaced some surprising results with data analysis using Power BI Desktop. These would be impossible to infer from the dataset if not for the visual aid & cross-report summarizing with the Power BI Desktop.
+
+\newpage 
+
+# Ending note
+
+Thank you to anyone who has read this documentation. I hope my case study prompted curiosity & willingness to explore the realm of data analysis using tools such as Power BI Desktop/Tableau/AWS Quicksight. It is a valuable skill to posses for not only professional careers, but also day-to-day life when dealing with variety of data.
+
+# References
+
+[1] **US electric rates** weblink: [https://catalog.data.gov/dataset/u-s-electric-utility-companies-and-rates-look-up-by-zipcode-2018-5a6f1](https://catalog.data.gov/dataset/u-s-electric-utility-companies-and-rates-look-up-by-zipcode-2018-5a6f1)
+
+[2] **Vermont EV charging stations** weblink: [https://catalog.data.gov/dataset/vt-electric-vehicle-charging-stations](https://catalog.data.gov/dataset/vt-electric-vehicle-charging-stations)
+
+[3] **Vermont Algae Biodiesel** weblink: [https://catalog.data.gov/dataset/vt-renewable-energy-sites-algae-biodiesel](https://catalog.data.gov/dataset/vt-renewable-energy-sites-algae-biodiesel)
+
+[4] **Vermont solar sites** weblink: [https://catalog.data.gov/dataset/vt-renewable-energy-sites-solar](https://catalog.data.gov/dataset/vt-renewable-energy-sites-solar)
