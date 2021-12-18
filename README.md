@@ -19,3 +19,7 @@ Case_study.pdf | Documentation of project knitted as a PDF file using R Markdown
 ## Target audience
 
 Entry level professionals or graduates from different fields who wish to explore analytical tools for data analysis and embark on their own case studies with a reference project
+
+# Further resources
+
+Hands-on learning with a live lab session for learning Power BI: https://docs.microsoft.com/en-us/learn/modules/clean-data-power-bi/
