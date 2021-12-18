@@ -7,3 +7,15 @@ to tell a data story
 
 * **Power BI Desktop reports**: Total of 3 reports that show variety of visuals to gain insights from data
 *  **Data transformation with Power Query Editor**: Data replacement, merging records and modifying columns as part of data processing
+
+## Uploaded files
+
+Name | Purpose
+------------ | -------------
+Datasets.xlsx | Raw datasets obtained from data.gov website collected into one workbook
+Renewables_BI | Power BI Desktop file containing reports and transformed queries
+Case_study.pdf | Documentation of project knitted as a PDF file using R Markdown
+
+## Target audience
+
+Entry level professionals or graduates from different fields who wish to explore analytical tools for data analysis and embark on their own case studies with a reference project
