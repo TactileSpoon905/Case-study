@@ -15,6 +15,8 @@ Name | Purpose
 Datasets.xlsx | Raw datasets obtained from data.gov website collected into one workbook
 Renewables_BI.pbix | Power BI Desktop file containing reports and transformed queries
 Case_study.pdf | Documentation of project knitted as a PDF file using R Markdown
+Case_study.Rmd | R Markdown file used in RStudio environment to document the PDF project file
+
 
 ## Target audience
 
