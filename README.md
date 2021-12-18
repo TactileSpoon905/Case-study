@@ -13,7 +13,7 @@ to tell a data story
 Name | Purpose
 ------------ | -------------
 Datasets.xlsx | Raw datasets obtained from data.gov website collected into one workbook
-Renewables_BI | Power BI Desktop file containing reports and transformed queries
+Renewables_BI.pbix | Power BI Desktop file containing reports and transformed queries
 Case_study.pdf | Documentation of project knitted as a PDF file using R Markdown
 
 ## Target audience
