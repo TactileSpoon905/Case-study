@@ -22,4 +22,4 @@ Entry level professionals or graduates from different fields who wish to explore
 
 # Further resources
 
-Hands-on learning with a live lab session for learning Power BI: https://docs.microsoft.com/en-us/learn/modules/clean-data-power-bi/
+Hands-on live lab session for learning Power BI: https://docs.microsoft.com/en-us/learn/modules/clean-data-power-bi/
